@@ -1,0 +1,6 @@
+framework: netstandard1.3
+
+source https://api.nuget.org/v3/index.json
+
+nuget EventStore.ClientAPI.NetCore 4.0.0-alpha-1
+nuget System.Reactive
