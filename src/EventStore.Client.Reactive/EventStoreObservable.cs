@@ -2,7 +2,6 @@
 using System;
 using System.Reactive.Disposables;
 using System.Reactive.Subjects;
-using System.Threading.Tasks;
 
 namespace EventStore.Client.Reactive
 {
@@ -47,16 +46,9 @@ namespace EventStore.Client.Reactive
                 streamId,
                 position,
                 CatchUpSubscriptionSettings.Default,
-                EventAppeared,
-                subscriptionDropped: SubscriptionDropped);
+                EventAppeared);
         }
-        private void SubscriptionDropped(EventStoreCatchUpSubscription esSubscription, SubscriptionDropReason dropReason, Exception error)
-        {
-            Task.Delay(TimeSpan.FromSeconds(3)).ContinueWith(_ =>
-            {
-                SubscribeToStream();
-            });
-        }
+        
         private void EventAppeared(EventStoreCatchUpSubscription esSubscription, ResolvedEvent @event)
         {
             position = @event.OriginalEventNumber;
