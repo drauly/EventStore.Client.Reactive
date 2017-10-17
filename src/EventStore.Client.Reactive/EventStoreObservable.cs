@@ -2,6 +2,7 @@
 using System;
 using System.Reactive.Disposables;
 using System.Reactive.Subjects;
+using System.Threading.Tasks;
 
 namespace EventStore.Client.Reactive
 {
@@ -49,10 +50,11 @@ namespace EventStore.Client.Reactive
                 EventAppeared);
         }
         
-        private void EventAppeared(EventStoreCatchUpSubscription esSubscription, ResolvedEvent @event)
+        private Task EventAppeared(EventStoreCatchUpSubscription esSubscription, ResolvedEvent @event)
         {
             position = @event.OriginalEventNumber;
             internalStream.OnNext(@event.ToEvent());
+            return Task.CompletedTask;
         }
     }
 }
