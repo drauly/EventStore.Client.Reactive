@@ -1,5 +1,9 @@
 Allow creating observable over eventstore connection, and add some reactive extensions to handle events. Created observables are hot and refcount, so that subscription stay alive until their is subscribers.
 
+nuget id : 
+
+``` EventStore.Client.Reactive ```
+
 Create observable :
 
 ```csharp
