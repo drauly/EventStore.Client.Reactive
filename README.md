@@ -33,6 +33,6 @@ Custom serializer
 
 ```csharp
 var subscription = connection.CreateObservable(StreamId)
-							 .Deserialize<MyEvent>(new CustomEventSerializer())
-                      		 .Subscribe(e => Console.WriteLine("event handled : " + e.ToString())
+                             .Deserialize<MyEvent>(new CustomEventSerializer())
+			     .Subscribe(e => Console.WriteLine("event handled : " + e.ToString())
 ```
