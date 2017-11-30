@@ -45,7 +45,7 @@ namespace EventStore.Client.Reactive
         {
             eventStoreSubscription = connection.SubscribeToStreamFrom(
                 streamId,
-                position,
+                position == 0 ? (long?) null : position,
                 CatchUpSubscriptionSettings.Default,
                 EventAppeared);
         }
