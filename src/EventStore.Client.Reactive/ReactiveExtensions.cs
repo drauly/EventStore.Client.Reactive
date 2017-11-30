@@ -36,7 +36,7 @@ namespace EventStore.Client.Reactive
                             }
                             
                         })
-                       .Where(e => !e.Equals(default(TEvent)));
+                       .Where(e => !Equals(e, default(TEvent)));
         }
    
         public static IObservable<EventWithPosition<TEvent>> DeserializeWithPosition<TEvent>(
@@ -66,7 +66,7 @@ namespace EventStore.Client.Reactive
                             }
                             
                         })
-                     .Where(e => !e.Equals(default(EventWithPosition<TEvent>)));
+                     .Where(e => !Equals(e, default(EventWithPosition<TEvent>)));
         }
         
         public static IObservable<long> HandleEvent<TEvent>(
