@@ -1,6 +1,6 @@
-framework: netstandard1.3
+framework: netstandard2.0
 
 source https://api.nuget.org/v3/index.json
 
-nuget EventStore.ClientAPI.NetCore 4.0.2-rc
-nuget System.Reactive
+nuget EventStore.ClientAPI.NetCore 4.0.3-rc
+nuget System.Reactive >= 3.1.1
