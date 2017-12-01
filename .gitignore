@@ -241,3 +241,5 @@ _Pvt_Extensions
 typings/
 node_modules/
 bower_components/
+/paket-files/paket.restore.cached
+/.paket/paket.bootstrapper.exe
