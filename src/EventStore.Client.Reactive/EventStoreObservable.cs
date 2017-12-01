@@ -12,12 +12,18 @@ namespace EventStore.Client.Reactive
         private readonly ISubject<Event> internalStream;
         private EventStoreCatchUpSubscription eventStoreSubscription;
         private readonly string streamId;
+        private readonly Action<long> liveProcessingStarted;
         private long position;
 
-        public EventStoreObservable(IEventStoreConnection connection, string streamId, long? position)
+        public EventStoreObservable(
+            IEventStoreConnection connection, 
+            string streamId, 
+            long? position, 
+            Action<long> liveProcessingStarted = null)
         {
             this.connection = connection;
             this.streamId = streamId;
+            this.liveProcessingStarted = liveProcessingStarted;
             this.position = position ?? GetLatestStreamPosition(connection, streamId);
             this.internalStream = new Subject<Event>();
         }
@@ -47,7 +53,9 @@ namespace EventStore.Client.Reactive
                 streamId,
                 position == 0 ? (long?) null : position,
                 CatchUpSubscriptionSettings.Default,
-                EventAppeared);
+                EventAppeared,
+                _ => liveProcessingStarted(position)
+                );
         }
         
         private Task EventAppeared(EventStoreCatchUpSubscription esSubscription, ResolvedEvent @event)

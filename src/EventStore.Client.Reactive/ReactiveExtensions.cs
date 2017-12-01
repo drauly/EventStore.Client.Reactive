@@ -6,9 +6,13 @@ namespace EventStore.Client.Reactive
 {
    public static class ReactiveExtensions
    {
-        public static IObservable<Event> CreateObservable(this IEventStoreConnection connection, string streamId, int? position = null)
+        public static IObservable<Event> CreateObservable(
+            this IEventStoreConnection connection, 
+            string streamId, 
+            int? position = null, 
+            Action<long> liveProcessingStarted = null)
         {
-            return new EventStoreObservable(connection, streamId, position).RefCount();
+            return new EventStoreObservable(connection, streamId, position, liveProcessingStarted).RefCount();
         }
    
         public static IObservable<TEvent> Deserialize<TEvent>(
