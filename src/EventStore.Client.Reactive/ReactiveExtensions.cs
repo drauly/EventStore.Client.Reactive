@@ -9,7 +9,7 @@ namespace EventStore.Client.Reactive
         public static IObservable<Event> CreateObservable(
             this IEventStoreConnection connection, 
             string streamId, 
-            int? position = null, 
+            long? position = null, 
             Action<long> liveProcessingStarted = null)
         {
             return new EventStoreObservable(connection, streamId, position, liveProcessingStarted).RefCount();
