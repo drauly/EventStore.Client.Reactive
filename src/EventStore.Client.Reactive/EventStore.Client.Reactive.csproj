@@ -3,5 +3,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>EventStore.Client.Reactive</AssemblyName>
   </PropertyGroup>
-  <Import Project="..\..\.paket\Paket.Restore.targets" />
+  <ItemGroup>
+    <PackageReference Include="EventStore.Client" Version="21.2.2" />
+    <PackageReference Include="System.Reactive" Version="5.0.0" />
+  </ItemGroup>
 </Project>
