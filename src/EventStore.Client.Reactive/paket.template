@@ -1,6 +1,0 @@
-type project
-licenseUrl http://opensource.org/licenses/MIT
-
-description Reactive extensions for eventstore subscriptions
-
-projectUrl https://github.com/drauly/EventStore.Client.Reactive
